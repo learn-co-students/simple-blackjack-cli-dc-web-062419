@@ -3,13 +3,13 @@ def welcome
 end
 
 def deal_card
-  random_num= rand(1..11)
+  rand(1..11)
+
 end
 
 
 def display_card_total(card_total)
   puts "Your cards add up to #{card_total}"
-
 end
 
 def prompt_user
@@ -28,17 +28,19 @@ def initial_round
   first_round = deal_card + deal_card
   display_card_total(first_round)
   return first_round
+
 end
 
 def hit?(card_total)
   prompt_user
   input = get_user_input
   if input == "h"
-    card_total  += deal_card
-  else
+    card_total += deal_card
+  elsif input == "s"
     card_total
+  else 
+    invalid_command
   end
-    
 
 end
 
@@ -57,7 +59,8 @@ def runner
     card_total = hit?(card_total)
     display_card_total(card_total)
   end
-end_game(card_total)
+  end_game(card_total)
+
 
 end
     
